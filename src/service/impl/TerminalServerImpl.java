@@ -1,7 +1,6 @@
 package service.impl;
 
 import service.TerminalServer;
-import service.exception.AccountIsLockedException;
 import service.exception.InsufficientFundsException;
 import service.exception.InvalidAmountException;
 
@@ -20,6 +19,7 @@ public class TerminalServerImpl implements TerminalServer {
      * @throws InvalidAmountException     если сумма не кратна 100.
      * @throws InsufficientFundsException если на счёте недостаточно средств.
      */
+    @Override
     public Float withdrawMoney() throws InvalidAmountException, InsufficientFundsException {
         int sum = requestAmount("Сколько денег вы хотите снять: ");
         validateAmount(sum);
@@ -38,6 +38,7 @@ public class TerminalServerImpl implements TerminalServer {
      * @return текущий остаток на счёте после пополнения.
      * @throws InvalidAmountException если сумма не кратна 100.
      */
+    @Override
     public Float depositMoney() throws InvalidAmountException {
         int sum = requestAmount("Сколько денег вы хотите положить: ");
         validateAmount(sum);
@@ -72,7 +73,8 @@ public class TerminalServerImpl implements TerminalServer {
     /**
      * Выводит на экран текущий остаток на счёте.
      */
-    private void displayBalance() {
+    @Override
+    public void displayBalance() {
         System.out.println("Ваш остаток: " + moneyInAccount);
     }
 }

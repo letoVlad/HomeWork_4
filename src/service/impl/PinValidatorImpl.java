@@ -54,7 +54,8 @@ public class PinValidatorImpl implements PinValidator {
      *
      * @return введённый пароль в виде целого числа. В случае ошибки возвращается 0.
      */
-    private Integer checkPasswordForNumbers() {
+    @Override
+    public Integer checkPasswordForNumbers() {
         System.out.print("Введите пароль: ");
         try {
             return scanner.nextInt();
@@ -71,7 +72,8 @@ public class PinValidatorImpl implements PinValidator {
      *
      * @throws AccountIsLockedException если пользователь пытается ввести символы во время блокировки.
      */
-    private void temporaryInputBlocking() {
+    @Override
+    public void temporaryInputBlocking() {
         long startTime = System.currentTimeMillis();
 
         while (System.currentTimeMillis() - startTime < BLOCK_TIME) {

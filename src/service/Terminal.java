@@ -4,8 +4,7 @@ public interface Terminal {
 
     boolean checkAccountStatus();
 
-    Float withdrawMoney();
+    void withdrawMoney();
 
-    Float depositMoney();
-
+    void depositMoney();
 }

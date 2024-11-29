@@ -1,19 +1,20 @@
 package service.impl;
 
+import service.Terminal;
 import service.exception.InsufficientFundsException;
 import service.exception.InvalidAmountException;
 
 
-public class TerminalImpl {
+public class TerminalImpl implements Terminal {
     PinValidatorImpl pinValidator = new PinValidatorImpl();
     TerminalServerImpl terminalServer = new TerminalServerImpl();
 
-
+    @Override
     public boolean checkAccountStatus() {
         return pinValidator.isValid();
     }
 
-
+    @Override
     public void withdrawMoney() {
         try {
             terminalServer.withdrawMoney();
@@ -22,6 +23,7 @@ public class TerminalImpl {
         }
     }
 
+    @Override
     public void depositMoney() {
         try {
             terminalServer.depositMoney();
